@@ -22,7 +22,7 @@ public class IndexController extends BaseController {
     @Operation(summary = "获取首页数据")
     @GetMapping
     public AjaxResult index() {
-        return success(indexService.getIndexData());
+        return success(indexService.getIndexData() );
     }
 
 }

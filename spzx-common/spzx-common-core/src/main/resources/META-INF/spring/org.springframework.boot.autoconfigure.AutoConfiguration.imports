@@ -1,2 +1,3 @@
 com.spzx.common.core.utils.SpringUtils
 com.spzx.common.core.config.MybatisPlusConfig
+com.spzx.common.core.interceptor.FeignAddInnerHeaderInterceptor

@@ -2,6 +2,7 @@ package com.spzx.product.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.spzx.product.domain.*;
+import com.spzx.product.domain.vo.ItemVO;
 
 import java.util.List;
 import java.util.Map;
@@ -27,4 +28,8 @@ public interface ProductService extends IService<Product> {
     List<ProductSku> selectProductSkuList(SkuQuery skuQuery);
 
 
+    ItemVO selectItemVOBySkuId(Long skuId) ;
+
+
+    void deleteCacheAsync(List<String> skuIdCacheKeyList);
 }

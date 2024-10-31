@@ -6,18 +6,17 @@ import com.spzx.common.core.domain.R;
 import com.spzx.common.core.web.controller.BaseController;
 import com.spzx.common.core.web.domain.AjaxResult;
 import com.spzx.common.core.web.page.TableDataInfo;
-import com.spzx.common.log.annotation.Log;
 import com.spzx.common.security.annotation.InnerAuth;
 import com.spzx.product.domain.*;
+import com.spzx.product.domain.vo.ItemVO;
 import com.spzx.product.service.ProductService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
-import java.util.Map;
+
 
 /**
  * 商品Controller
@@ -86,17 +85,29 @@ public class ProductController extends BaseController {
     }
 
     //远程调用使用，商品列表
+    @Operation(summary="内部调用接口：使用skuId查询商品")
     @GetMapping("/skuList/{pageNum}/{pageSize}")
     public R<TableDataInfo> skuList(@PathVariable Integer pageNum,
                                     @PathVariable Integer pageSize,
                                     @ModelAttribute SkuQuery skuQuery) {
         //设置分页参数
-        PageHelper.startPage(pageNum,pageSize);
+        PageHelper.startPage(pageNum, pageSize);
         //调用service方法根据条件查询
         List<ProductSku> list = productService.selectProductSkuList(skuQuery);
 
         TableDataInfo dataTable = getDataTable(list);
         return R.ok(dataTable);
     }
+
+    @InnerAuth
+    @Operation(summary="内部调用接口: 根据sku查询商品" )
+    @GetMapping("getItemVOBySkuId/{skuId}")
+    public R<ItemVO> getItemVOBySkuId(@PathVariable("skuId") Long skuId ) {
+        return R.ok( productService.selectItemVOBySkuId(skuId) );
+    }
+
+
+
+
 
 }

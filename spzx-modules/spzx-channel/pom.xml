@@ -7,6 +7,7 @@
         <groupId>com.spzx</groupId>
         <version>3.6.3</version>
     </parent>
+
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>spzx-channel</artifactId>

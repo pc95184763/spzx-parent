@@ -45,8 +45,11 @@ public class SpzxProductApplication implements CommandLineRunner{
 
         //查询mysql里面商品skuId
         List<ProductSku> productSkuList = productSkuMapper.selectList(null);
-        productSkuList.forEach(item -> {
+        productSkuList.forEach( item -> {
             bloomFilter.add(item.getId());
-        });
+        } ) ;
+
     }
+
+
 }

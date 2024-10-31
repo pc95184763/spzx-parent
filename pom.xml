@@ -227,6 +227,8 @@
                 <artifactId>alipay-sdk-java</artifactId>
                 <version>${alipay.version}</version>
             </dependency>
+
+
         </dependencies>
     </dependencyManagement>
 

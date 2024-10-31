@@ -10,9 +10,13 @@ import org.springframework.web.bind.annotation.*;
 value = "spzx-user",fallbackFactory = RemoteUserInfoFallbackFactory.class)
 public interface RemoteUserInfoService {
 
+
+
     @PostMapping("/userInfo/register")
     public R register(@RequestBody UserInfo userInfo,@RequestHeader(SecurityConstants.FROM_SOURCE) String source);
 
     @GetMapping("/userInfo/info/{username}")
     public R<UserInfo> getUserInfo(@PathVariable("username") String username, @RequestHeader(SecurityConstants.FROM_SOURCE) String source);
+
+
 }

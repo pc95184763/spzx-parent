@@ -113,4 +113,5 @@ public class Product extends BaseEntity {
     @Schema(description = "详情图片列表")
     @TableField(exist = false)
     private List<String> detailsImageUrlList;
+
 }
